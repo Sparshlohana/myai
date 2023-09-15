@@ -5,4 +5,18 @@
 body {
     background: rgb(64, 0, 0);
     background: linear-gradient(90deg, rgba(64, 0, 0, 1) 0%, rgba(110, 33, 0, 1) 100%);
+    overflow: hidden;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background: #780e0a;
+    border-radius: 10px;
 }

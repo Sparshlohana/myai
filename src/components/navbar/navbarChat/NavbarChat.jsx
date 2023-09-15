@@ -1,8 +1,8 @@
 'use client'
 
 import { SearchIcon, ThreeDots } from '@/components/global/icons/Icons';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
+import ProfilePic from '@/components/global/profilePic/ProfilePic';
+import { useEffect, useState } from 'react';
 
 const NavbarChat = () => {
     const [show, setShow] = useState(true);
@@ -14,18 +14,15 @@ const NavbarChat = () => {
     const handleShow = () => {
         setTimeout(() => {
             setShow(false);
-        }, 4000);
+        }, 3000);
     }
-    const image = "/assets/images/profile.jpg"
     return (
         <div className='bg-[#700c0ca3] w-[69vw] p-[10px] rounded-tr-lg flex items-center justify-between'>
             <div className='flex items-center gap-3'>
-                <div>
-                    <Image src={image} className='rounded-full cursor-pointer' width={50} height={50} alt='profileImg' />
-                </div>
+                <ProfilePic />
                 <div className='flex flex-col'>
                     <div>
-                        <h1 className='text-xl font-medium text-white'>Saumya</h1>
+                        <h1 className='text-xl font-medium text-white'>Sparsh&apos;s AI</h1>
                     </div>
                     {show && (
                         <div>

@@ -3,8 +3,10 @@ import { GoogleAuth } from "google-auth-library";
 import { DiscussServiceClient } from "@google-ai/generativelanguage";
 
 
-export async function GET(req) {
+export async function GET(req, params) {
     try {
+        const url = new URL(req.url);
+        const message = url.searchParams.get("messages");
         const MODEL_NAME = "models/chat-bison-001";
         const API_KEY = process.env.PALM_AI_API_KEY;
         const client = new DiscussServiceClient({
@@ -17,7 +19,7 @@ export async function GET(req) {
             candidateCount: 1, // Optional. The number of candidate results to generate.
             prompt: {
                 // Required. Alternating prompt/response messages.
-                messages: [{ content: "What is your age?" }],
+                messages: [{ content: message }],
             },
         });
 
@@ -27,6 +29,6 @@ export async function GET(req) {
         return NextResponse.json({ response });
     } catch (error) {
         console.log(error.message);
-        NextResponse.json({ error: error.message });
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
